@@ -10,10 +10,10 @@ import base64 # Import base64 for embedding image in HTML
 # Make sure the model file exists in the correct path
 model_path = 'best (2).pt'
 if not os.path.exists(model_path):
-    st.error(f"Deteksi Objek dengan YOLOv8")
+    st.error(f"Deteksi Objek Mineral Sedimen Klastik dengan YOLOv8")
 else:
     model = YOLO(model_path)
-    st.title("Deteksi Objek dengan YOLOv8")
+    st.title("Deteksi Objek Mineral Sedimen Klastik dengan YOLOv8")
 
     uploaded_file = st.file_uploader("Unggah gambar...", type=["jpg", "jpeg", "png"])
 
