@@ -33,24 +33,28 @@ else:
             im_array = r.plot()  # plot a BGR numpy array of predictions
             im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
             st.image(im, caption="Hasil Deteksi", use_column_width=True)
-
+            
             # Hitung jumlah mineral yang terdeteksi secara keseluruhan
             num_detected = len(r.boxes)
+            
             st.write(f"Jumlah mineral yang terdeteksi secara keseluruhan: {num_detected}")
             # Hitung jumlah mineral berdasarkan kelas (dengan perbaikan untuk box.cls)
-            if num_detected = > 0:
+            if num_detected > 0:
                 try:
-                    class_counts = Counter(int(box.cls.item()) for box in r.boxes)  # Menggunakan Counter
+                    class_counts = Counter(int(box.cls.item()) for box in r.boxes)  # Perbaikan: gunakan .item() untuk tensor
                     st.write("Jumlah mineral berdasarkan kelas:")
                     class_summary = []
                     for class_id, count in class_counts.items():
-                        # Gunakan mapping manual untuk nama kelas
-                        class_name = class_names.get(class_id, model.names.get(class_id, f"Unknown_{class_id}"))
+                        class_name = model.names[class_id]  # Mengambil nama kelas dari model (misalnya, plagioklas, feldspar, dll.)
                         st.write(f"- {class_name}: {count}")
                         class_summary.append(f"{class_name}: {count}")
                     class_summary_text = "; ".join(class_summary)  # Untuk HTML
                 except Exception as e:
                     st.error(f"Error saat menghitung kelas: {e}")
+                    class_summary_text = "Error dalam perhitungan kelas"
+            else:
+                st.write("Tidak ada mineral yang terdeteksi.")
+                class_summary_text = "Tidak ada deteksi"
 
             # --- Add functionality to save the result image as HTML ---
             # Save the result image temporarily
