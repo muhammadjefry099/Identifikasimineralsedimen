@@ -41,7 +41,7 @@ else:
                     st.write("Jumlah mineral berdasarkan kelas:")
                     class_summary = []
                     for class_id, count in class_counts.items():
-                        class_name = model.names[class_id]
+                        class_name = model.names[plagiokls, kuarsa, litik, opaq, feldspar]
                         st.write(f"- {class_name}: {count}")
                         class_summary.append(f"{class_name}: {count}")
                     class_summary_text = "; ".join(class_summary)  # Untuk HTML
