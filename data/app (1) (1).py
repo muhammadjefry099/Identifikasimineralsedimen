@@ -38,17 +38,6 @@ else:
             num_detected = len(r.boxes)
             
             st.write(f"Jumlah mineral yang terdeteksi secara keseluruhan: {num_detected}")
-            # Hitung jumlah mineral berdasarkan kelas (dengan perbaikan untuk box.cls)
-            if num_detected > 0:
-                try:
-                    class_counts = Counter(int(box.cls.item()) for box in r.boxes)  # Menggunakan Counter
-                    st.write("Jumlah mineral berdasarkan kelas:")
-                    for class_id, count in class_counts.items():
-                        class_name = class_names.get(class_id, f"Unknown Class ID: {class_id}")
-                        st.write(f"- {class_name}: {count}")
-
-                except Exception as e:
-                    st.error(f"Error menghitung jumlah per kelas: {e}")
                     
             # --- Add functionality to save the result image as HTML ---
             # Save the result image temporarily
