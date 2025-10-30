@@ -14,7 +14,10 @@ if not os.path.exists(model_path):
 else:
     model = YOLO(model_path)
     st.title("Deteksi Objek Mineral Sedimen Klastik dengan YOLOv8")
-
+    
+    # Mapping nama kelas berdasarkan indeks dari model /content/best (2).pt
+    class_names = {0: 'feldspar', 1: 'kuarsa', 2: 'litik', 3: 'opaq', 4: 'plagioklas'}
+    
     uploaded_file = st.file_uploader("Unggah gambar...", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
