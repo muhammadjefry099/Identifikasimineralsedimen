@@ -31,6 +31,10 @@ else:
             im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
             st.image(im, caption="Hasil Deteksi", use_column_width=True)
 
+            # Hitung dan tampilkan jumlah mineral yang terdeteksi
+            num_detected = len(r.boxes)
+            st.write(f"Jumlah mineral yang terdeteksi: {num_detected}")
+            
             # --- Add functionality to save the result image as HTML ---
             # Save the result image temporarily
             result_image_path = "result_image.png"
