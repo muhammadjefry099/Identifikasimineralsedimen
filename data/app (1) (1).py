@@ -69,15 +69,3 @@ else:
         # for r in results:
         #     for box in r.boxes:
         #         st.write(f"Class: {model.names[int(box.cls)]}, Confidence: {box.conf.item():.2f}, Box: {box.xyxy[0].tolist()}")
-        
-        from flask import Flask, jsonify
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return jsonify({"message": "Halo dari Flask di Vercel!"})
-
-def handler(event, context):
-    return app(event, context)
-
