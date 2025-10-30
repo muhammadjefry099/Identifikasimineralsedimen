@@ -41,21 +41,15 @@ else:
             # Hitung jumlah mineral berdasarkan kelas (dengan perbaikan untuk box.cls)
             if num_detected > 0:
                 try:
-                    class_counts = Counter(int(box.cls.item()) for box in r.boxes)  # Perbaikan: gunakan .item() untuk tensor
+                    class_counts = Counter(int(box.cls.item()) for box in r.boxes)  # Menggunakan Counter
                     st.write("Jumlah mineral berdasarkan kelas:")
-                    class_summary = []
                     for class_id, count in class_counts.items():
-                        class_name = model.names[count]  # Mengambil nama kelas dari model (misalnya, plagioklas, feldspar, dll.)
+                        class_name = class_names.get(class_id, f"Unknown Class ID: {class_id}")
                         st.write(f"- {class_name}: {count}")
-                        class_summary.append(f"{class_name}: {count}")
-                    class_summary_text = "; ".join(class_summary)  # Untuk HTML
-                except Exception as e:
-                    st.error(f"Error saat menghitung kelas: {e}")
-                    class_summary_text = "Error dalam perhitungan kelas"
-            else:
-                st.write("Tidak ada mineral yang terdeteksi.")
-                class_summary_text = "Tidak ada deteksi"
 
+                except Exception as e:
+                    st.error(f"Error menghitung jumlah per kelas: {e}")
+                    
             # --- Add functionality to save the result image as HTML ---
             # Save the result image temporarily
             result_image_path = "result_image.png"
