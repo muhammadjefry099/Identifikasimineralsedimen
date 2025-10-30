@@ -31,7 +31,8 @@ else:
             im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
             st.image(im, caption="Hasil Deteksi", use_column_width=True)
 
-                       num_detected = len(r.boxes)
+               # Hitung jumlah mineral yang terdeteksi secara keseluruhan
+            num_detected = len(r.boxes)
             st.write(f"Jumlah mineral yang terdeteksi secara keseluruhan: {num_detected}")
             # Hitung jumlah mineral berdasarkan kelas (dengan perbaikan untuk box.cls)
             if num_detected > 0:
