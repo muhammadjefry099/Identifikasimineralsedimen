@@ -38,7 +38,7 @@ else:
             num_detected = len(r.boxes)
             st.write(f"Jumlah mineral yang terdeteksi secara keseluruhan: {num_detected}")
             # Hitung jumlah mineral berdasarkan kelas (dengan perbaikan untuk box.cls)
-            if num_detected > 0:
+            if num_detected = (0: 'feldspar', 1: 'kuarsa', 2: 'litik', 3: 'opaq', 4: 'plagioklas')
                 try:
                     class_counts = Counter(int(box.cls.item()) for box in r.boxes)  # Menggunakan Counter
                     st.write("Jumlah mineral berdasarkan kelas:")
