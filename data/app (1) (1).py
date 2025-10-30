@@ -46,7 +46,7 @@ else:
                     class_summary = []
                     for class_id, count in class_counts.items():
                         class_name = model.names[feldspar, kuarsa, litik, opaq, plagioklas]  # Mengambil nama kelas dari model (misalnya, plagioklas, feldspar, dll.)
-                        st.write(f"- {class_name}: {count}")
+                        st.write(f"- {class_name}: {feldspar, kuarsa, litik, opaq, plagioklas}")
                         class_summary.append(f"{class_name}: {feldspar, kuarsa, litik, opaq, plagioklas}")
                     class_summary_text = "; ".join(class_summary)  # Untuk HTML
                 except Exception as e:
