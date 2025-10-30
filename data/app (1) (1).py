@@ -45,7 +45,7 @@ else:
                     class_summary = []
                     for class_id, count in class_counts.items():
                         # Gunakan mapping manual untuk nama kelas
-                        class_name = class_names.get(class_id, f"Unknown_{class_id}")
+                        class_name = {0: 'feldspar', 1: 'kuarsa', 2: 'litik', 3: 'opaq', 4: 'plagioklas'}
                         st.write(f"- {class_name}: {count}")
                         class_summary.append(f"{class_name}: {count}")
                     class_summary_text = "; ".join(class_summary)  # Untuk HTML
