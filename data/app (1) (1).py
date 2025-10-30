@@ -31,9 +31,18 @@ else:
             im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
             st.image(im, caption="Hasil Deteksi", use_column_width=True)
 
-            # Hitung dan tampilkan jumlah mineral yang terdeteksi
+            # Hitung jumlah mineral yang terdeteksi secara keseluruhan
             num_detected = len(r.boxes)
-            st.write(f"Jumlah mineral yang terdeteksi: {num_detected}")
+            st.write(f"Jumlah mineral yang terdeteksi secara keseluruhan: {num_detected}")
+            # Hitung jumlah mineral berdasarkan kelas
+            class_counts = Counter(int(box.cls) for box in r.boxes)
+            st.write("Jumlah mineral berdasarkan kelas:")
+            class_summary = []
+            for class_id, count in class_counts.items():
+                class_name = model.names[class_id]
+                st.write(f"- {class_name}: {count}")
+                class_summary.append(f"{class_name}: {count}")
+            class_summary_text = "; ".join(class_summary)  # Untuk HTML
             
             # --- Add functionality to save the result image as HTML ---
             # Save the result image temporarily
