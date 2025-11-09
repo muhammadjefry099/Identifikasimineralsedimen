@@ -8,7 +8,7 @@ import base64 # Import base64 for embedding image in HTML
 
 # Load the trained YOLOv8 model
 # Make sure the model file exists in the correct path
-model_path = 'best (4).pt'
+model_path = 'best (2).pt'
 if not os.path.exists(model_path):
     st.error(f"Deteksi Objek dengan YOLOv8")
 else:
