@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 # Load the trained YOLOv8 model
 # Make sure the model file exists in the correct path
-model = YOLO('/content/best (4).pt')
+model = YOLO('best (4).pt')
 
 st.title("Deteksi Objek dengan YOLOv8")
 
